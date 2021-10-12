@@ -14,7 +14,7 @@ const Input = (props) => {
             onChange={onChange}
             placeholder={placeholder}
             type={type}
-            value={value}
+            defaulValue={value}
           />
         </React.Fragment>
     )
