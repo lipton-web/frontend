@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "moneybook",
   "version": "0.1.0",
   "private": true,
@@ -25,6 +26,19 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.1",
     "web-vitals": "^1.0.1"
+=======
+  "name": "mini3",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+>>>>>>> 7b16f327d8d9872f88d2b7e6675095a28ae46a4c
   },
   "scripts": {
     "start": "react-scripts start",
