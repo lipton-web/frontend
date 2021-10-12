@@ -3,6 +3,9 @@ import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import styled from 'styled-components';
 
+import Button from "../elements/Button";
+import { useHistory, Link } from "react-router-dom";
+
 
 
 const Calendar = (props) => {
@@ -24,6 +27,9 @@ const Calendar = (props) => {
         // events={schedule_list}
         // eventClick={updateModal}
       />
+      <Link to="/add">
+        <AddButton>+</AddButton>
+      </Link>
     </Container>
   )
 }
@@ -46,6 +52,26 @@ const Container = styled.div`
   }
 
 `
+const AddButton = styled.button`
+  position: fixed;
+  right: 16px;
+  bottom: 50px;
+  width: 60px;
+  height: 60px;
+  background-color: #f9e000;
+  box-sizing: border-box;
+  font-weight: 800;
+  font-size: 38px;
+  border: none;
+  border-radius: 50px;
+  color: #212121;
+  z-index: 2;
+  transition: all 0.3s linear;
 
+  &:hover {
+    transform: rotate(90deg);
+    cursor: pointer;
+  }
+`;
 
 export default Calendar
