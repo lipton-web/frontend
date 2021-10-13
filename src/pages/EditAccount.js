@@ -4,8 +4,25 @@ import Text from "../elements/Text";
 import Input from "../elements/Input";
 import Button from "../elements/Button";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 
-const EditAccount = () => {
+import { useHistory, useParams } from 'react-router-dom';
+
+import {deleteContents} from '../redux/modules/contents';
+
+const EditAccount = (props) => {
+  // const { recordId } = props;
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const params = useParams();
+  console.log(params);
+  const list_index = params.recordId;
+  console.log(list_index);
+  const moneybook_list = useSelector((state) => state.contents.list);
+  const moneybook_idx = moneybook_list.findIndex(p => p.recordId === parseInt(list_index));
+  const moneybook = moneybook_list[moneybook_idx];
+  console.log(moneybook);
+
   return (
     <React.Fragment>
       <AddWrap>
@@ -24,11 +41,11 @@ const EditAccount = () => {
           </Grid>
           <Grid is_flex padding="16px 0">
             <Text>지출액</Text>
-            <Input width="360px" padding="10px 0" />
+            <Input width="360px" padding="10px 0" value={moneybook.cost}/>
           </Grid>
           <Grid is_flex padding="16px 0">
             <Text>내용</Text>
-            <Input width="360px" padding="10px 0" />
+            <Input width="360px" padding="10px 0" value={moneybook.contents}/>
           </Grid>
           <Grid is_between>
             <Button
@@ -44,6 +61,10 @@ const EditAccount = () => {
               margin="20px 0 0 0"
               padding="12px 0"
               radius="4px"
+              onClick={(e)=> {
+                dispatch(deleteContents(moneybook_idx))
+                history.replace('/')
+              }}
             >
               삭제
             </Button>

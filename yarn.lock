@@ -1183,9 +1183,17 @@
   dependencies:
     "tslib" "^2.1.0"
 
-"@fullcalendar/daygrid@^5.9.0":
+"@fullcalendar/daygrid@^5.9.0", "@fullcalendar/daygrid@~5.9.0":
   "integrity" "sha512-yTYjTM+bjTWfq5uUnSMBH4j1il+b0IAAe+q2UcAeky4iggwn9pi+taUtETtlPTQCSBSWaF8TuEZ3+apB0RrjyQ=="
   "resolved" "https://registry.npmjs.org/@fullcalendar/daygrid/-/daygrid-5.9.0.tgz"
+  "version" "5.9.0"
+  dependencies:
+    "@fullcalendar/common" "~5.9.0"
+    "tslib" "^2.1.0"
+
+"@fullcalendar/interaction@^5.9.0":
+  "integrity" "sha512-bBvcY3Mh2z4rP5AqB8dL76SljPEVCVawNmdQlcKShedhxvkkMR1zMcJ3sgabLBvXqooC9f+PbmEb5LlSGEse3A=="
+  "resolved" "https://registry.npmjs.org/@fullcalendar/interaction/-/interaction-5.9.0.tgz"
   "version" "5.9.0"
   dependencies:
     "@fullcalendar/common" "~5.9.0"
@@ -1197,6 +1205,15 @@
   "version" "5.9.0"
   dependencies:
     "@fullcalendar/common" "~5.9.0"
+    "tslib" "^2.1.0"
+
+"@fullcalendar/timegrid@^5.9.0":
+  "integrity" "sha512-X9JLepHz6hSuiziVkIlgBkx/W/5E4nIqJ6i0LISk3zPFH/Arn0QjQU345ISys8OTwezPUgJvLGrl4Yy4/gRULw=="
+  "resolved" "https://registry.npmjs.org/@fullcalendar/timegrid/-/timegrid-5.9.0.tgz"
+  "version" "5.9.0"
+  dependencies:
+    "@fullcalendar/common" "~5.9.0"
+    "@fullcalendar/daygrid" "~5.9.0"
     "tslib" "^2.1.0"
 
 "@hapi/address@2.x.x":
@@ -5995,6 +6012,11 @@
   "resolved" "https://registry.npmjs.org/ignore/-/ignore-5.1.8.tgz"
   "version" "5.1.8"
 
+"immer@^9.0.6":
+  "integrity" "sha512-G95ivKpy+EvVAnAab4fVa4YGYn24J1SpEktnJX7JJ45Bd7xqME/SCplFzYFmTbrkwZbQ4xJK1xMTUYBkN6pWsQ=="
+  "resolved" "https://registry.npmjs.org/immer/-/immer-9.0.6.tgz"
+  "version" "9.0.6"
+
 "immer@8.0.1":
   "integrity" "sha512-aqXhGP7//Gui2+UrEtvxZxSquQVXTpZ7KDxfCcKAF3Vysvw0CViVaW9RZ1j1xlIYqaaaipBoqdqeibkc18PNvA=="
   "resolved" "https://registry.npmjs.org/immer/-/immer-8.0.1.tgz"
@@ -9584,6 +9606,11 @@
   dependencies:
     "flatpickr" "^4.6.2"
     "prop-types" "^15.5.10"
+
+"react-hook-form@^7.17.2":
+  "integrity" "sha512-oBaHwlYnbpzSFdNrs43QpcM+K2A0kUeNjV86ECYkCimlR1Ctl+tz4oQQd9plfGYkO7PJGLVMOVpUtL5EHjAcYQ=="
+  "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.17.2.tgz"
+  "version" "7.17.2"
 
 "react-icons@^4.3.1":
   "integrity" "sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ=="

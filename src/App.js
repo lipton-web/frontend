@@ -14,8 +14,9 @@ function App() {
     <div className="App">
       <Header />
       <Route path="/" exact component={Main}/>
-      <Route path="/add"><AddAccount /></Route>
-      <Route path="/edit"><EditAccount /></Route>
+      <Route path="/add" component={AddAccount}></Route>
+      {/* <Route path="/edit" component={EditAccount}></Route> */}
+      <Route path="/edit/:recordId" component={EditAccount}></Route>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Input = (props) => {
     const { label, placeholder, type, value, onChange, width, padding, margin} = props;
+
     const styles = {
         width: width,
         padding: padding,
@@ -14,7 +15,7 @@ const Input = (props) => {
             onChange={onChange}
             placeholder={placeholder}
             type={type}
-            defaulValue={value}
+            defaultValue={value}
           />
         </React.Fragment>
     )
