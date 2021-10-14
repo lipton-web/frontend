@@ -9,6 +9,7 @@ import Button from "../elements/Button";
 import { useHistory, Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
+import Modal from "./Modal"
 // const events = [
 //   {
 //     id: 1,
@@ -28,8 +29,41 @@ import { useSelector } from 'react-redux';
 
 const Calendar = (props) => {
   // const dispatch = useDispatch();
+  const history = useHistory();
+  const moneybook_list = useSelector((state) => state.contents.list);
+  const [id, setId] = React.useState(null);
+  const [title, setTitle] = React.useState(null);
+  const [date, setDate] = React.useState(null);
 
-  const moneybook_list = useSelector((state) => state.contents.list)
+ 
+  // const [completedItems, setCompletedItems] = React.useState();
+  // const [isShow, setIsShow] = React.useState(false);
+
+  const allEvent = moneybook_list.map((list, idx) => {
+    // console.log(list);
+    return {
+      title: list.title,
+      date: list.date,
+      id: list.recordId
+    }
+    
+  })
+  console.log(allEvent)
+
+// 달력 위에서 각 이벤트를 눌렀을때. 해당 이벤트의 id와 title 값을 불러온다. + 창 열림
+  const openPage = (id, title) => {
+    // setId(id);
+    // setTitle(title);
+    // console.log(id, title)
+    history.push('/edit/'+id)
+    
+  }
+  
+
+  // const editPage = (e) => {
+  //   const scheduleObj = e.event._def.extendedProps
+  // }
+
 
   return (
     <Container>
@@ -40,18 +74,27 @@ const Calendar = (props) => {
         expandRows="true"
         locale="ko"
         headerToolbar= {{
-          left: 'today',
+          left: '',
           center: 'title',
-          right: 'prev,next',
+          right: 'prev,today,next',
         }}
         dayMaxEvents= "true"
         events={moneybook_list}
-        // eventClick={updateModal}
+        eventClick={(e) => openPage(e.event._def.extendedProps.recordId)}
+        // event._def.extendedProps.recordId
+
+        // eventTimeFormat={{
+        //   hour: "numeric",
+        //   minute: "2-digit",
+        //   meridiem: "short",
+        // }}
    
       />
       <Link to="/add">
         <AddButton>+</AddButton>
       </Link>
+
+
     </Container>
   )
 }

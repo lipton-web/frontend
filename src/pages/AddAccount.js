@@ -1,4 +1,8 @@
 import React, { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { createContents } from "../redux/modules/contents";
+import { useHistory } from "react-router";
+
 import Grid from "../elements/Grid";
 import Text from "../elements/Text";
 import Input from "../elements/Input";
@@ -9,12 +13,58 @@ import DatePicker from "react-datepicker";
 import Flatpickr from 'react-flatpickr';
 import "flatpickr/dist/themes/material_orange.css";
 
-const AddAccount = (props) => {
-  let dateInfo = React.useRef();
-  const date = new Date().toUTCString();
 
+// import { useForm } from 'react-hook-form';
+
+const AddAccount = (props) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const date_Ref = React.useRef(null);
+  const category_Ref = React.useRef(null);
+  const cost_Ref = React.useRef(null);
+  const desc_Ref = React.useRef(null);
+
+  // const addContentsList = () => {
+  //   // 스프레드 문법! 기억하고 계신가요? :) 
+  //   // 원본 배열 list에 새로운 요소를 추가해주었습니다.
+  //   // setList([...list, text.current.value]);
+  //   dispatch(createContents(date_Ref.current.value, category_Ref.current.value));
+  // }
+
+  // console.log(cost_Ref.current.value);
+
+  const date = new Date().toUTCString();
+  // .toUTCString()
   const [startDate, setStartDate] = useState(new Date());
-  const [contents, setContents] = useState("");
+  const [category, setCategory] = useState("");
+  const [cost, setCost] = useState("");
+  const [desc, setDesc] = useState("");
+
+  const recordAccount = () => {
+    dispatch(createContents({date: startDate, category: category, cost, desc, title: `${category} ${desc} ${cost}`}));
+    history.goBack();
+    console.log(startDate, category, cost, desc)
+  }
+
+
+  // const recordAccount = () => {
+  //   dispatch(createContents({
+  //     date: date_Ref.current.flatpickr.selectedDates[0].toUTCString(),
+  //     category: category_Ref.current.value,
+  //     cost: cost_Ref.current.value,
+  //     desc: desc_Ref.current.value
+  //   }))
+    
+  // }
+
+     // const recordData = {
+    //   date: dateRef.current.flatpickr.selectedDates[0].toUTCString(),
+    //   category: categoryRef.current.value,
+    //   cost: costRef.current.value,
+    //   desc: descRef.current.value
+    // }
+  
 
   return (
     <React.Fragment>
@@ -23,18 +73,25 @@ const AddAccount = (props) => {
         <TextBox>
           <Grid is_flex>
             <Text>일시</Text>
-            <Flatpickr 
-              data-enable-time
+            {/* <Flatpickr 
+              ref={date_Ref}
+              // data-enable-time
+              data-able-time
               value={date}
               onChange={(date) => {
                 setStartDate(date);
               }}
+            /> */}
+            <Input
+              width="360px"
+              padding="10px 0"
+              onChange={e => {setStartDate(e.target.value)}}
             />
           </Grid>
           <Grid is_flex padding="16px 0">
             <Text>카테고리</Text>
-            <select style={{ width: "360px", padding: "10px 0" }}>
-              <option value="">카테고리</option>
+            <select style={{ width: "360px", padding: "10px 0" }} onChange={e => {setCategory(e.target.value)}}>
+              <option value="카테고리">카테고리</option>
               <option value="식비">식비</option>
               <option value="교통비">교통비</option>
               <option value="주거비">주거비</option>
@@ -47,14 +104,16 @@ const AddAccount = (props) => {
             <Input
               width="360px"
               padding="10px 0"
-              onChange={(e) =>
-                console.log(e.target.value)
-              }
+              onChange={e => {setCost(e.target.value)}}
             />
           </Grid>
           <Grid is_flex padding="16px 0">
             <Text>내용</Text>
-            <Input width="360px" padding="10px 0" />
+            <Input 
+              width="360px" 
+              padding="10px 0"
+              onChange={e => {setDesc(e.target.value)}}
+            />
           </Grid>
           <Grid>
             <Button
@@ -62,6 +121,7 @@ const AddAccount = (props) => {
               margin="20px 0 0 0"
               padding="12px 0"
               radius="4px"
+              onClick={recordAccount}
             >
               기록하기
             </Button>

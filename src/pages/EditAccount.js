@@ -4,8 +4,23 @@ import Text from "../elements/Text";
 import Input from "../elements/Input";
 import Button from "../elements/Button";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 
-const EditAccount = () => {
+import { useHistory, useParams } from 'react-router-dom';
+
+import {deleteContents} from '../redux/modules/contents';
+
+const EditAccount = (props) => {
+	const dispatch = useDispatch();
+	const history = useHistory();
+	const params = useParams(); // url 파라미터에서 인덱스 가져오기
+	const list_index = params.recordId;
+	const moneybook_list = useSelector((state) => state.contents.list);
+
+	console.log(list_index);
+	console.log(params);
+	// console.log(moneybook_list[list_index]);
+
   return (
     <React.Fragment>
       <AddWrap>
@@ -44,6 +59,10 @@ const EditAccount = () => {
               margin="20px 0 0 0"
               padding="12px 0"
               radius="4px"
+              onClick={(e)=> {
+                dispatch(deleteContents(list_index))
+                history.replace('/')
+              }}
             >
               삭제
             </Button>

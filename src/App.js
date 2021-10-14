@@ -7,6 +7,9 @@ import Header from "./components/Header";
 import Main from "./pages/Main";
 import AddAccount from './pages/AddAccount';
 import EditAccount from './pages/EditAccount';
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Users from "./User";
 
 
 function App() {
@@ -15,7 +18,18 @@ function App() {
       <Header />
       <Route path="/" exact component={Main}/>
       <Route path="/add"><AddAccount /></Route>
-      <Route path="/edit"><EditAccount /></Route>
+      <Route path="/edit/:recordId"><EditAccount /></Route>
+      {/* <Route path="/edit/:recordId"><EditAccount /></Route> */}
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/signup">
+        <Signup />
+      </Route>
+      <Route path="/users">
+        <Users />
+      </Route>
+
     </div>
   );
 }
