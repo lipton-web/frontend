@@ -25,16 +25,16 @@ const Calendar = (props) => {
     const account = moneybook_list.find(event => {
       return event.title === title
     })
-    console.log(account.recordId);
-    history.push(`/edit/${account.recordId}`);
+    console.log(account.id);
+    history.push(`/edit/${account.id}`);
   }
 
 
   const allEvent = moneybook_list.map((list, idx) => {
     return {
       title: list.title,
-      data: list.data,
-      id: list.recordId
+      date: list.date,
+      id: list.id
     }
   });
   console.log(allEvent);

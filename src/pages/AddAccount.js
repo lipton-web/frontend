@@ -27,26 +27,25 @@ const AddAccount = (props) => {
   const [startDate, setStartDate] = useState("");
   const [category, setCategory] = useState("");
   const [cost, setCost] = useState("");
-  const [desc, setDesc] = useState("");
+  const [contents, setContents] = useState("");
   const recordAccount = () => {
     dispatch(
       createContents({
+        id: 1,
         date: startDate,
         category: category,
         cost,
-        desc,
-        title: `${category} ${desc} ${cost}`,
+        contents,
+        title: `${category} ${contents} ${cost}`,
       })
     );
     history.goBack();
-    console.log(startDate, category, cost, desc);
+    console.log(startDate, category, cost, contents);
   };
 
   const { setDateTime } = props;
   const containerRef = useRef();
   const container = containerRef.current;
-
-  
 
   return (
     <React.Fragment>
@@ -64,7 +63,7 @@ const AddAccount = (props) => {
                 setStartDate(date.flatpickr.selectedDates[0].toUTCString());
               }}
             /> */}
-            
+
             {/* <div ref={containerRef}>
               <Flatpickr
                 appendTo={container}
@@ -80,15 +79,18 @@ const AddAccount = (props) => {
             /> */}
 
             <Input
+              placeholder="예시) 2021-10-15"
               width="360px"
               padding="10px 0"
-              onChange={e => {setStartDate(e.target.value)}}
+              onChange={(e) => {
+                setStartDate(e.target.value);
+              }}
             />
           </Grid>
           <Grid is_flex padding="16px 0">
             <Text>카테고리</Text>
             <select
-              style={{ width: "360px", padding: "10px 0" }}
+              style={{ width: "360px", padding: "10px 0", borderRadius: "4px" }}
               onChange={(e) => {
                 setCategory(e.target.value);
               }}
@@ -117,12 +119,13 @@ const AddAccount = (props) => {
               width="360px"
               padding="10px 0"
               onChange={(e) => {
-                setDesc(e.target.value);
+                setContents(e.target.value);
               }}
             />
           </Grid>
           <Grid>
             <Button
+              position
               width="160px"
               margin="20px 0 0 0"
               padding="12px 0"
