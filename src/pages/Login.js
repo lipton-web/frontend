@@ -15,7 +15,7 @@ const Login = (props) => {
       return;
     }
 
-    dispatch(userActions.LoginDB(userid, pwd));
+    dispatch(userActions.setLoginDB(userid, pwd));
   };
   return (
     <Box>
@@ -34,7 +34,7 @@ const Login = (props) => {
           }}
           type="password"
         ></Input>
-        <Button>로그인하기</Button>
+        <Button onClick={Login}>로그인하기</Button>
       </Container>
       <Container>
         <Button style={{ background: "#f9e000" }}>카카오톡 로그인</Button>

@@ -1,24 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 // import { Button, Grid, Input } from "../elements";
-import { signUpDB } from "../redux/modules/user";
+import { actionCreators as userActions } from "../redux/modules/user";
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
 
 const Signup = (props) => {
-  const [userid, setId] = React.useState("");
-  const [pwd, setPwd] = React.useState("");
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const [pwd_check, setPwdCheck] = React.useState("");
-  const [gender, setGender] = React.useState("");
+  const [sex, setSex] = React.useState("");
   const [age, setAge] = React.useState("");
   const [job, setJob] = React.useState("");
   const [salary, setSalary] = React.useState("");
 
   const _Signup = () => {
-    if (userid === "") {
+    
+    if (username === "") {
       alert("please enter your username");
 
       return;
     }
-    if (pwd === "") {
+    if (password === "") {
       alert("please enter your password");
       return;
     }
@@ -26,7 +32,7 @@ const Signup = (props) => {
       alert("please enter your password");
       return;
     }
-    if (gender === "") {
+    if (sex === "") {
       alert("please enter your gender");
       return;
     }
@@ -43,13 +49,15 @@ const Signup = (props) => {
       return;
     }
 
-    if (pwd !== pwd_check) {
+    if (password !== pwd_check) {
       alert("please check the password one more");
       return;
     }
 
-    signUpDB(userid, pwd, gender, age, job, salary);
+    console.log(username, password, sex, age, job, salary);
+    dispatch(userActions.signUpAPI(username, password, sex, age, job, salary));
   };
+  
   return (
     <Box>
       <H1>Join</H1>
@@ -57,9 +65,9 @@ const Signup = (props) => {
       <Input
         label="username"
         placeholder="please enter your username."
-        value={userid}
+        value={username}
         onChange={(e) => {
-          setId(e.target.value);
+          setUsername(e.target.value);
         }}
       />
 
@@ -67,9 +75,9 @@ const Signup = (props) => {
         label="password"
         type="password"
         placeholder="please enter your password."
-        value={pwd}
+        value={password}
         onChange={(e) => {
-          setPwd(e.target.value);
+          setPassword(e.target.value);
         }}
       />
 
@@ -84,11 +92,11 @@ const Signup = (props) => {
       />
 
       <Input
-        label="gender"
+        label="sex"
         placeholder="please enter your jender."
-        value={gender}
+        value={sex}
         onChange={(e) => {
-          setGender(e.target.value);
+          setSex(e.target.value);
         }}
       />
 
