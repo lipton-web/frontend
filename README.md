@@ -26,3 +26,4 @@
 ![image](https://user-images.githubusercontent.com/82028756/137631562-02270462-6a91-4baa-a697-ee19b4453743.png)
 
 수정화면
+![image](https://user-images.githubusercontent.com/82028756/137638375-c967359f-ba67-4784-ab4c-7f2f043cdfe7.png)
