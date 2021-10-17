@@ -34,6 +34,20 @@ const AddAccount = (props) => {
   // console.log('날짜표시',startDate)
   // console.log('날짜나누기',accDate);
 
+
+  //   내용을 바꿔주는 함수
+  const changeDate = (e) => {
+    setStartDate(e.target.value);
+  };
+
+  const changeCost = (e) => {
+    setCost(e.target.value);
+  };
+
+  const changeContents = (e) => {
+    setContents(e.target.value);
+  };
+
   const recordAccount = () => {
     dispatch(
       contentsActions.createContentsAPI({
@@ -61,12 +75,11 @@ const AddAccount = (props) => {
             <Text>일시</Text>
             
             <Input
+              value={startDate}
               placeholder="예시) 2021-10-15"
               width="360px"
               padding="10px 0"
-              onChange={(e) => {
-                setStartDate(e.target.value);
-              }}
+              _onChange={changeDate}
             />
           </Grid>
           <Grid is_flex padding="16px 0">
@@ -89,21 +102,20 @@ const AddAccount = (props) => {
             <Text>지출액</Text>
             <Input
               type="number"
+              value={cost}
               width="360px"
               padding="10px 0"
-              onChange={(e) => {
-                setCost(e.target.value);
-              }}
+              _onChange={changeCost}
             />
           </Grid>
           <Grid is_flex padding="16px 0">
             <Text>내용</Text>
             <Input
+              type="text"
+              value={contents}
               width="360px"
               padding="10px 0"
-              onChange={(e) => {
-                setContents(e.target.value);
-              }}
+              _onChange={changeContents}
             />
           </Grid>
           <Grid>

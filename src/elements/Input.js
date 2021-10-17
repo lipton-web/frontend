@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Input = (props) => {
-    const { label, placeholder, type, value, onChange, width, padding, margin} = props;
+    const { placeholder, type, value, _onChange, width, padding, margin} = props;
     const styles = {
         width: width,
         padding: padding,
@@ -11,20 +11,20 @@ const Input = (props) => {
     return (
         <React.Fragment>
             <ElInput {...styles}
-            onChange={onChange}
+            onChange={_onChange}
             placeholder={placeholder}
             type={type}
-            defaulValue={value}
+            value={value}
           />
         </React.Fragment>
     )
 }
 Input.defaultProps = {
-    label: false,
+    // label: false,
     placeholder: '텍스트를 입력해주세요',
     type: 'text',
     value: '',
-    onChange: () => {},
+    _onChange: () => {},
     width: '100%',
     padding: false,
     margin: false,
