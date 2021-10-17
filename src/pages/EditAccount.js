@@ -42,12 +42,19 @@ const EditAccount = (props) => {
   const [contents, setContents] = React.useState(moneybook.contents);
   const [cost, setCost] = React.useState(moneybook.cost);
   const [category, setCategory] = React.useState(moneybook.category);
-  // const [recordId, setRecordId] = React.useState(moneybook.recordId)
-  // const [date, setDate] = React.useState(moneybook.date)
-  const recordId = moneybook.recordId
-  const date = moneybook.date
-  console.log('>>>>>>>>>>>',cost)
+  const [recordId, setRecordId] = React.useState(moneybook.recordId)
+  const [date, setDate] = React.useState(moneybook.date)
+  // console.log('>>>>>>>>>>>',cost)
  
+  //   내용을 바꿔주는 함수
+  const changeCost = (e) => {
+    setCost(e.target.value);
+  };
+
+  const changeContents = (e) => {
+    setContents(e.target.value);
+  };
+
 
   // const updateAccount = () => {
   //   dispatch(
@@ -101,9 +108,7 @@ const EditAccount = (props) => {
               width="360px"
               padding="10px 0"
               value={cost}
-              onChange={(e) => {
-                setCost(e.target.value);
-              }}
+              _onChange={changeCost}
             />
           </Grid>
           <Grid is_flex padding="16px 0">
@@ -112,9 +117,7 @@ const EditAccount = (props) => {
               width="360px"
               padding="10px 0"
               value={contents}
-              onChange={(e) => {
-                setContents(e.target.value);
-              }}
+              _onChange={changeContents}
             />
           </Grid>
           <Grid is_between>
