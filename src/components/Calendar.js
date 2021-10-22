@@ -12,7 +12,6 @@ import user from "../redux/modules/user";
 import Permit from '../shared/Permit';
 
 const Calendar = (props) => {
-  // const {history} = props;
 
   const dispatch = useDispatch();
   const history = useHistory();
